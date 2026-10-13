@@ -462,3 +462,107 @@ section,[id]{scroll-margin-top:72px}
 }
 /* the nav's fixed-height flex row must not apply to the menu panel inside the header */
 .nav .menu-panel .wrap{height:auto;display:grid;align-items:stretch}
+
+/* ---------- stat bars: driven by --w so they can animate in ---------- */
+.stat .bar i{width:var(--w)}
+.statgrid.pre .bar i{width:0}
+.statgrid.go .bar i{transition:width 1s var(--ease-out)}
+
+/* ---------- the match story (scrollytelling) ---------- */
+.story{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:start}
+.story-vis{position:sticky;top:76px;display:flex;flex-direction:column;gap:10px;padding:16px;
+  background:var(--deck);border:1px solid var(--line);border-radius:var(--r-panel)}
+.sb{display:grid;grid-template-columns:1fr auto auto auto 1fr;align-items:center;gap:12px;padding:2px 4px 8px;
+  border-bottom:1px solid var(--line)}
+.sb-team{font:700 22px/1 var(--font-head);text-transform:uppercase;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-team:first-child{text-align:right}
+.sb-team.posh{color:var(--ink-1)}
+.sb b{font:700 40px/1 var(--font-head);color:var(--blue-ink);min-width:24px;text-align:center}
+.sb-clock{font:700 15px/1 var(--font-head);letter-spacing:.08em;color:var(--navy);background:var(--ink-1);
+  padding:6px 9px;border-radius:6px;min-width:46px;text-align:center}
+.sb-note{grid-column:1/-1;text-align:center;font:700 12px/1 var(--font-head);letter-spacing:.14em;color:var(--blue-ink);text-transform:uppercase;min-height:12px}
+.vis-pitch{position:relative}
+.pitch-svg{width:100%;display:block}
+.pitch-svg .lines rect,.pitch-svg .lines line,.pitch-svg .lines circle{fill:none;stroke:rgb(255 255 255/.16);stroke-width:.35}
+.pitch-svg .lines rect:first-child{fill:rgb(255 255 255/.015)}
+.pitch-svg .lines .goalmouth{fill:rgb(255 255 255/.12);stroke:none}
+.pitch-svg .lines .spot{fill:rgb(255 255 255/.25);stroke:none}
+.pitch-svg .dir{font:700 2.4px var(--font-head);letter-spacing:.12em;fill:var(--ink-4)}
+.shot{fill:none;stroke-width:.45;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2);
+  transition:opacity .45s var(--ease-out),transform .45s var(--ease-out);cursor:pointer;outline:none}
+.shot.p{stroke:var(--blue)} .shot.o{stroke:var(--ink-3)}
+.shot.goal.p{fill:var(--blue);stroke:#fff} .shot.goal.o{fill:var(--ink-2);stroke:#fff}
+.shot.on{opacity:.9;transform:scale(1)}
+.shot:hover,.shot:focus{stroke-width:.8;opacity:1}
+.shot.focus{opacity:1;stroke-width:.8;animation:pulse 1.6s var(--ease-out) infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+.shot-tip{position:absolute;z-index:3;transform:translate(-50%,calc(-100% - 10px));pointer-events:none;
+  background:var(--ink-1);color:var(--navy);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;
+  font-size:12px;line-height:1.3;white-space:nowrap;box-shadow:0 10px 30px -10px rgb(0 0 0/.7)}
+.shot-tip b{font:700 15px/1.1 var(--font-head);text-transform:uppercase}
+.vis-row{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+.vis-l{font:700 12px/1 var(--font-head);letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase}
+.vis-l small{font-family:var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink-4)}
+.vis-row .legend{font-size:12px;color:var(--ink-3);display:flex;gap:8px;align-items:center}
+.vis-row .legend i{width:14px;height:3px;display:inline-block;border-radius:2px;margin-right:2px}
+.vis-row .legend i.p{background:var(--blue)} .vis-row .legend i.o{background:var(--ink-3)}
+.race-svg{width:100%;height:190px;display:block}
+.race-svg .grid{stroke:var(--line);stroke-width:1}
+.race-svg .tick{font:11px var(--font-ui);fill:var(--ink-4)}
+.race-svg .ht{stroke:var(--line-strong);stroke-dasharray:3 3}
+.race-svg .race{fill:none;stroke-width:2.6;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.race-svg .race.p{stroke:var(--blue);stroke-width:3.2} .race-svg .race.o{stroke:var(--ink-3)}
+.race-svg .rgoal{stroke:#fff;stroke-width:1.5} .race-svg .rgoal.p{fill:var(--blue)} .race-svg .rgoal.o{fill:var(--ink-3)}
+.race-svg .clock{stroke:var(--ink-1);stroke-width:1;stroke-dasharray:2 3}
+.race-svg .endlab{font:700 13px var(--font-head);letter-spacing:.02em}
+.race-svg .endlab.p{fill:var(--blue-ink)} .race-svg .endlab.o{fill:var(--ink-3)}
+.vis-momwrap{display:flex;flex-direction:column;gap:6px}
+.mom-svg{width:100%;height:56px;display:block}
+.mom-svg .mbar.p{fill:var(--blue)} .mom-svg .mbar.o{fill:var(--ink-4)}
+.mom-svg .mbar{transition:opacity .4s} .mom-svg .mbar.future{opacity:.15}
+.mom-svg .axis{stroke:var(--line-strong)}
+.mom-svg .win{fill:transparent;transition:fill .4s}
+.mom-svg .win.on.p{fill:rgb(47 123 255/.16)} .mom-svg .win.on.o{fill:rgb(255 255 255/.08)}
+
+.story-steps{display:flex;flex-direction:column;padding:10vh 0 30vh}
+.st-step{min-height:62vh;display:flex;align-items:center}
+.st-step:first-child{min-height:40vh;align-items:flex-start}
+.st-card{width:100%;padding:22px 24px;border:1px solid var(--line);border-radius:var(--r-panel);background:var(--deck);
+  opacity:.38;transform:translateY(8px);transition:opacity .4s,transform .4s var(--ease-out),border-color .3s;cursor:pointer}
+.st-step.is-past .st-card{opacity:.55}
+.st-step.is-active .st-card{opacity:1;transform:none;border-color:var(--line-strong)}
+.st-step.goal.is-active .st-card{border-color:var(--blue);box-shadow:inset 3px 0 0 var(--blue)}
+.st-step.final .st-card{background:linear-gradient(140deg,rgb(47 123 255/.14),var(--deck) 60%)}
+.st-k{margin:0 0 8px;font:700 13px/1 var(--font-head);letter-spacing:.14em;color:var(--blue-ink);text-transform:uppercase}
+.st-card h3{font-size:30px;text-transform:uppercase;line-height:1}
+.st-card p:last-child{margin:12px 0 0;color:var(--ink-2);font-size:16px}
+.story:not(.ready) .st-card{opacity:1;transform:none}   /* no JS: plain readable list */
+@media (prefers-reduced-motion:reduce){.shot,.st-card,.race-svg .clock,.mom-svg .win{transition:none}.shot.focus{animation:none}}
+@media (max-width:900px){
+  .story{grid-template-columns:1fr;gap:0}
+  .story-vis{top:60px;z-index:5;padding:10px;gap:6px;border-radius:12px;
+    box-shadow:0 16px 30px -14px rgb(0 0 0/.9)}
+  .sb b{font-size:30px} .sb-team{font-size:17px} .sb{padding-bottom:6px;gap:8px}
+  .race-svg{height:118px} .vis-momwrap{display:none}
+  .vis-row{margin-top:0}
+  .story-steps{padding:4vh 0 20vh}
+  .st-step{min-height:58vh}
+  .st-card h3{font-size:24px}
+}
+
+/* ---------- stand-out players ---------- */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.pcard{padding:18px}
+.pc-top{display:flex;align-items:center;gap:14px}
+.pc-r{flex:0 0 auto;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  font:700 22px/1 var(--font-head);color:var(--ink-1);
+  background:conic-gradient(var(--blue) var(--r),var(--deck-up) 0);position:relative}
+.pc-r::before{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--deck)}
+.pc-r{isolation:isolate} .pc-r::before{z-index:-1}
+.pc-n{font:700 22px/1 var(--font-head);text-transform:uppercase}
+.pc-m{display:block;font-size:12px;color:var(--ink-4);margin:10px 0 6px}
+.pcard ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.pcard li{font-size:14px;color:var(--ink-2);padding-left:14px;position:relative}
+.pcard li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:2px;background:var(--blue)}
+.pill-link{text-decoration:none;border-color:var(--blue);color:var(--blue-ink)}
+.shot-tip[hidden]{display:none}
