@@ -18,14 +18,27 @@
   <a class="mark" href="../../index.html" aria-label="Posh On Paper home"><span><b>POSH</b><i>on paper</i></span></a>
   <span class="here">Posh 5–1 Blackpool · 22 Oct 24</span>
   <nav>
+    <a href="../../index.html#season">Season</a>
     <a href="../../index.html#latest">Latest</a>
     <a href="../../index.html#shift">The Shift</a>
     <a href="../../index.html#posts">Posts</a>
     <a href="../../index.html#table">Table</a>
     <a href="../../index.html#long-view">Long view</a>
     <a class="btn btn-blue" href="../../matches/index.html">All matches</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">
+      <span class="menu-ico" aria-hidden="true"><i></i><i></i><i></i></span>Menu</button>
   </nav>
-</div></header>
+</div>
+<div class="menu-panel" id="menu-panel" hidden><div class="wrap">
+  <a href="../../index.html#season"><b>Season so far</b><span>Averages + game-by-game change</span></a>
+  <a href="../../index.html#latest"><b>Latest match</b><span>Score, on-paper verdict, charts</span></a>
+  <a href="../../index.html#table"><b>League table</b><span>Where we stand</span></a>
+  <a href="../../index.html#shift"><b>The Savage Shift</b><span>Savage v Williams</span></a>
+  <a href="../../index.html#posts"><b>Posts</b><span>Latest carousel</span></a>
+  <a href="../../index.html#long-view"><b>Long view</b><span>Since Jan 2023</span></a>
+  <a href="../../matches/index.html" class="wide"><b>All matches</b><span>Every game · filter + sort</span></a>
+</div></div>
+</header>
 <div class="topbar"><div class="wrap tb"><a class="tb-item tb-pos" href="../../index.html#table"><span class="tb-l">League One 2026-27</span><span class="tb-v num">20th</span><span class="tb-s">8 pts from 9 games</span></a><div class="tb-item"><span class="tb-l">Record</span><span class="tb-v num">W2 D2 L5</span><span class="tb-s">Goal difference -7</span></div><div class="tb-item"><span class="tb-l">Relegation</span><span class="tb-v">Safe on GD</span><span class="tb-s">level with Bromley (21st)</span></div><div class="tb-item"><span class="tb-l">Form</span><div class="form"><i class="L" title="Sheff Wed 1-2"></i><i class="D" title="MK Dons 1-1"></i><i class="L" title="Doncaster 0-2"></i><i class="L" title="Stockport 0-1"></i><i class="W" title="Leicester 3-1"></i></div><span class="tb-s">last 5 league games</span></div><div class="tb-item"><span class="tb-l">xG per game</span><span class="tb-v num">1.44<em>v</em>1.64</span><span class="tb-s">created v conceded</span></div><div class="tb-item"><span class="tb-l">Next game</span><span class="tb-v">Burton (H)</span><span class="tb-s">Sat 17 Oct</span></div></div></div>
 
 <div class="m-hero"><div class="glow"></div><div class="wrap">
@@ -62,6 +75,11 @@
 </div></footer>
 <script>
 (function(){
+  var mb=document.querySelector('.menu-btn'), mp=document.getElementById('menu-panel');
+  function setMenu(open){mb.setAttribute('aria-expanded',open);mp.hidden=!open;document.body.classList.toggle('menu-open',open)}
+  if(mb){mb.addEventListener('click',function(){setMenu(mp.hidden)});
+    mp.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});}
   var els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
