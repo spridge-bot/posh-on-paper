@@ -50,7 +50,7 @@
   svg('text', {x: 103, y: -0.8, class: 'dir', 'text-anchor': 'end'}, P).textContent = 'POSH ATTACK →';
   svg('text', {x: 2, y: -0.8, class: 'dir'}, P).textContent = '← ' + D.opp.toUpperCase() + ' ATTACK';
   var dots = D.shots.map(function (s, i) {
-    if (s[8]) return null; // own goal: FotMob gives the defender's frame, so it would plot at the wrong end
+    if (s[8]) return null; // own goal: recorded from the defender's end, so it would plot at the wrong end
     var posh = s[4] === 'p', x = posh ? s[0] : 105 - s[0], y = posh ? s[1] : 68 - s[1];
     var r = 0.9 + 5.2 * Math.sqrt(Math.max(s[2], 0.005));
     var c = svg('circle', {cx: x, cy: y, r: r, class: 'shot ' + (posh ? 'p' : 'o') + (s[5] === 'G' ? ' goal' : ''),
