@@ -663,3 +663,56 @@ section,[id]{scroll-margin-top:72px}
 .tteaser{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px;flex-wrap:wrap;
   background:linear-gradient(120deg,rgb(47 123 255/.14),var(--deck) 55%)}
 .tteaser p{color:var(--ink-2);max-width:640px}
+
+/* ---------- squad & selection ---------- */
+.mx-wrap{overflow:auto;max-height:78vh;border:1px solid var(--line);border-radius:var(--r-panel);background:var(--deck)}
+table.mx{border-collapse:separate;border-spacing:0;font-size:11px}
+.mx th,.mx td{padding:0;border-bottom:1px solid rgb(255 255 255/.04)}
+.mx thead th{position:sticky;top:0;z-index:2;background:var(--deck);padding:8px 1px 6px;vertical-align:bottom;border-bottom:1px solid var(--line-strong)}
+.mx thead th a{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none}
+.mx thead .badge{min-width:18px;height:18px;font-size:11px;padding:0 4px}
+.mx-opp{font:700 10px/1 var(--font-head);letter-spacing:.04em;color:var(--ink-2)}
+.mx-ha{font-size:9px;color:var(--ink-4)}
+.mx th.mx-name{position:sticky;left:0;z-index:1;background:var(--deck);text-align:left;padding:4px 12px 4px 10px;
+  white-space:nowrap;font:600 13px/1.2 var(--font-ui);color:var(--ink-1);border-right:1px solid var(--line-strong);min-width:170px}
+.mx thead th.mx-name{z-index:3;font:700 12px/1 var(--font-head);letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase}
+.mx-role{display:inline-block;width:34px;font:700 10px/1 var(--font-head);letter-spacing:.06em;color:var(--ink-4)}
+.mx td{text-align:center}
+.mx-c{display:block;width:30px;height:24px;margin:1px;line-height:24px;border-radius:3px;text-decoration:none;
+  font:700 11px/24px var(--font-head);color:rgb(255 255 255/.92);transition:transform .12s}
+.mx-c.dk,.mx-avg.dk{color:var(--navy)}
+.mx-c.sub{outline:1px dashed rgb(255 255 255/.55);outline-offset:-2px}
+.mx-c:hover{transform:scale(1.18);position:relative;z-index:1;box-shadow:0 4px 12px rgb(0 0 0/.6)}
+.mx .era-start{border-left:3px solid var(--blue)}
+.mx-sum{padding:0 8px!important;font:700 13px/1 var(--font-head);color:var(--ink-2);white-space:nowrap}
+.mx-avg{display:inline-block;padding:5px 7px;border-radius:4px;font:700 13px/1 var(--font-head);color:#fff}
+.mx-legend{display:flex;align-items:center;gap:4px;margin:0 0 12px;font-size:12px;color:var(--ink-3)}
+.mx-legend span{margin-right:6px}
+.mx-legend i{font:700 11px/1 var(--font-head);font-style:normal;color:#fff;padding:5px 8px;border-radius:3px}
+.mx-legend i.dk{color:var(--navy)}
+.xi{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:16px;align-items:start}
+@media (max-width:900px){.xi{grid-template-columns:1fr}}
+.xi-pitch{padding:12px}
+.xi-svg{width:100%;display:block}
+.xi-svg .lines rect,.xi-svg .lines line,.xi-svg .lines circle{fill:none;stroke:rgb(255 255 255/.18);stroke-width:.35}
+.xi-svg circle{stroke:#fff;stroke-width:.35}
+.xi-r{font:700 3px var(--font-head);fill:#fff} .xi-r.dk{fill:var(--navy)}
+.xi-n{font:700 2.6px var(--font-head);fill:var(--ink-1);letter-spacing:.04em}
+.xi-s{font:1.7px var(--font-ui);fill:var(--ink-3)}
+.xi-list{list-style:none;margin:0;padding:14px 18px;display:grid;gap:2px}
+.xi-list li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-1)}
+.xi-list li b{display:inline-block;width:40px;font:700 13px/1 var(--font-head);color:var(--blue-ink)}
+.xi-list li .num{float:right;font:700 16px/1 var(--font-head)}
+.xi-list li small{display:block;margin:4px 0 0 40px;color:var(--ink-4);font-size:12px}
+table.ft{width:100%;border-collapse:collapse;font-size:14px}
+.ft th{font:700 12px/1 var(--font-head);letter-spacing:.1em;color:var(--ink-4);text-align:left;padding:12px 12px;border-bottom:1px solid var(--line-strong);text-transform:uppercase}
+.ft td{padding:11px 12px;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.ft td b{color:var(--ink-1);font-family:var(--font-head);font-size:16px}
+.ft td.pos{color:var(--blue-ink);font-weight:700} .ft td.neg{color:var(--ink-3)}
+.ft .plus{color:var(--blue-ink);margin:0 4px}
+.small-n{font-size:12px;color:var(--ink-4)}
+.plist{padding:16px 18px;margin:0}
+.plist ul,.plist.rel{list-style:none;margin:0;padding:0}
+ul.plist.rel{padding:8px 18px}
+.plist li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-1)}
+.plist li small{display:block;margin-top:4px;color:var(--ink-4);font-size:12px}
