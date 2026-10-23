@@ -799,3 +799,8 @@ table.rt td{vertical-align:middle}
   .pm-net{justify-self:start}
 }
 @media (max-width:760px){.pm-net::before{content:"Net xG ";font:600 10px/1 var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.8}}
+
+/* league top-6 yardstick on the Season so far tiles */
+.ytd-bench{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;font-size:12.5px;color:var(--ink-3,#9aa)}
+.ytd-bench b{color:var(--ink-2,#ccd)}
+.spark .bench{stroke:currentColor;stroke-width:1.2;stroke-dasharray:4 3;opacity:.75;vector-effect:non-scaling-stroke}
